@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+          <span class="navbar-brand mb-0 h1">Citemetrix</span>
+        </div>
+      </nav>
+
+      <h1>Reporte de Datos de Sensores</h1>
+
+      <div class="sensor-button-group">
+        <div class="container-buttons">
+          <input
+            type="radio"
+            id="VEML7700"
+            name="sensor"
+            value="VEML7700"
+            class="vertical-align"
+          />
+          <label for="VEML7700" class="vertical-align">VEML7700</label><br />
+        </div>
+        <div class="container-buttons">
+          <input
+            type="radio"
+            id="TCS34725"
+            name="sensor"
+            value="TCS34725"
+            class="vertical-align"
+          />
+          <label for="TCS34725" class="vertical-align">TCS34725</label><br />
+        </div>
+        <div class="container-buttons">
+          <input
+            type="radio"
+            id="BME680"
+            name="sensor"
+            value="BME680"
+            class="vertical-align"
+          />
+          <label for="BME680" class="vertical-align">BME680</label>
+        </div>
+        <button type="button" class="btn btn-primary">Buscar</button>
+      </div>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Email</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Phone</th>
+          </tr>
+        </thead>
+        <tbody id="table-data"></tbody>
+      </table>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>

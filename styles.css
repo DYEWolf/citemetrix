@@ -1,0 +1,21 @@
+.sensor-button-group {
+  margin-top: 40px;
+  display: flex;
+}
+
+.container-buttons {
+  margin-right: 30px;
+}
+
+.vertical-align {
+  vertical-align: sub;
+}
+
+table {
+  margin-top: 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 20px;
+}
