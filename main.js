@@ -4,7 +4,7 @@ function getSensorData() {
 
     if(sensor == 'VEML7700') {
 
-        let labels = ['Timestamp', 'GPS', 'lux', 'white']; 
+        let labels = ['GPS', 'Timestamp', 'lux', 'white']; 
         let data = [
             {
                 timeStamp: "11",
