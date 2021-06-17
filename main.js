@@ -22,8 +22,8 @@ function getSensorData() {
                 white: "11"
             },
         ]
-        fetch('https://prenasal-cuttlefish-3039.dataplicity.io/sensors/VEML7700', options).then(res => {
-            console.log(res)
+        fetch('https://prenasal-cuttlefish-3039.dataplicity.io/sensors/VEML7700').then(res => {
+            return res.json()
         }).catch(err => {
             console.log(err)
         });
