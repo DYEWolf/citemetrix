@@ -6,20 +6,26 @@ function getSensorData() {
         let labels = ['Timestamp', 'GPS', 'Lux', 'White']; 
         fetch('https://prenasal-cuttlefish-3039.dataplicity.io/sensors/VEML7700').then(res => {
             console.log(res)
-        })
+        }).catch(err => {
+            console.log(err)
+        });
         createTable(labels, document.getElementById('table-container'));
 
     } else if(sensor == 'TCS34725') {
         let labels = ['Timestamp', 'GPS', 'Red', 'Green', 'Blue', 'Clear', 'Temp. Color'];
         fetch('https://prenasal-cuttlefish-3039.dataplicity.io/sensors/TCS34725').then(res => {
             console.log(res)
-        })
+        }).catch(err => {
+            console.log(err)
+        });
        createTable(labels, document.getElementById('table-container'));
     } else {
         let labels = ['Timestamp', 'GPS', 'Temp.', 'Press.', 'Hum'];
         fetch('https://prenasal-cuttlefish-3039.dataplicity.io/sensors/BME680').then(res => {
             console.log(res)
-        })
+        }).catch(err => {
+            console.log(err)
+        });
        createTable(labels, document.getElementById('table-container'));
     }
     
