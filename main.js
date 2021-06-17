@@ -4,15 +4,6 @@ function getSensorData() {
 
     if(sensor == 'VEML7700') {
 
-
-        const options = {
-            method: 'GET',
-            headers: new Headers({'Access-Control-Allow-Origin': '*',  'Content-Type': 'application/json'}),
-            mode: 'no-cors',
-            cache: 'no-cache'
-        };
-
-
         let labels = ['timeStamp', 'GPS', 'Lux', 'White']; 
         let data = [
             {
@@ -24,7 +15,9 @@ function getSensorData() {
         ]
         fetch('https://prenasal-cuttlefish-3039.dataplicity.io/sensors/VEML7700').then(res => {
             console.log(res)
-            return res.json()
+            return res
+        }).then(data => {
+            console.log(data)
         }).catch(err => {
             console.log(err)
         });
