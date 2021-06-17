@@ -31,6 +31,7 @@
             name="sensor"
             value="VEML7700"
             class="vertical-align"
+            checked
           />
           <label for="VEML7700" class="vertical-align">VEML7700</label><br />
         </div>
@@ -54,19 +55,12 @@
           />
           <label for="BME680" class="vertical-align">BME680</label>
         </div>
-        <button type="button" class="btn btn-primary">Buscar</button>
+        <button type="button" class="btn btn-primary" onclick="getSensorData()">
+          Obtener Datos
+        </button>
       </div>
 
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Email</th>
-            <th scope="col">Gender</th>
-            <th scope="col">Phone</th>
-          </tr>
-        </thead>
-        <tbody id="table-data"></tbody>
-      </table>
+      <div id="table-container"></div>
     </div>
     <script src="main.js"></script>
   </body>
