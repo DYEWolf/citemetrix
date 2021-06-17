@@ -21,6 +21,8 @@ function getSensorData() {
             return res.json();
         }).then(data1 => {
             console.log(data1)
+            let test = JSON.parse(data1)
+            console.log(test)
         });
         createTable(labels, document.getElementById('table-container'), data);
 
