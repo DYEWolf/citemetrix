@@ -4,18 +4,7 @@ function getSensorData() {
 
     if(sensor == 'VEML7700') {
 
-        myFetch().then(res => {
-            console.log(res)
-        })
-
-        const options = {
-            method: 'GET',
-            headers: new Headers({'Access-Control-Allow-Origin': '*',  'Content-Type': 'application/json', "Accept": "application/json"}),
-            cache: 'no-cache'
-        };
-
-
-        let labels = ['timeStamp', 'GPS', 'Lux', 'White']; 
+        let labels = ['Timestamp', 'GPS', 'lux', 'white']; 
         let data = [
             {
                 timeStamp: "11",
@@ -25,16 +14,15 @@ function getSensorData() {
             },
         ]
         fetch('https://prenasal-cuttlefish-3039.dataplicity.io/sensors/VEML7700').then(res => {
-          
             return res.text();
         }).then(responseData => {
             let data = JSON.parse(responseData);
             console.log(responseData)
             console.log(data)
-
+            createTable(labels, document.getElementById('table-container'), data);
             
         });
-        createTable(labels, document.getElementById('table-container'), data);
+       
 
     } else if(sensor == 'TCS34725') {
         let labels = ['timeStamp', 'GPS', 'Red', 'Green', 'Blue', 'Clear', 'tempColor'];
