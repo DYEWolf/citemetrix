@@ -17,47 +17,27 @@ function getSensorData() {
             return res.text();
         }).then(responseData => {
             let data = JSON.parse(responseData);
-
             createTable(labels, document.getElementById('table-container'), data);   
         });
        
 
     } else if(sensor == 'TCS34725') {
-        let labels = ['timeStamp', 'GPS', 'Red', 'Green', 'Blue', 'Clear', 'tempColor'];
-        let data = [
-            {
-                timeStamp: "11",
-                gps: '11',
-                red: "11",
-                green: "11",
-                blue: "11",
-                clear: "11",
-                tempColor: "11"
-            },
-        ]
+        let labels = ['GPS', 'Timestamp', 'blue', 'clear', 'green', 'red', 'tempColor'];
         fetch('https://prenasal-cuttlefish-3039.dataplicity.io/sensors/TCS34725').then(res => {
-            console.log(res)
-        }).catch(err => {
-            console.log(err)
+            return res.text();
+        }).then(responseData => {
+            let data = JSON.parse(responseData);
+            createTable(labels, document.getElementById('table-container'), data);   
         });
-       createTable(labels, document.getElementById('table-container'), data);
+       
     } else {
-        let labels = ['timeStamp', 'GPS', 'Temp', 'Press', 'Hum'];
-        let data = [
-            {
-                timeStamp: "11",
-                gps: '11',
-                temp: "11",
-                press: "11",
-                hum: "11"
-            },
-        ]
+        let labels = ['GPS', 'Timestamp', 'presion', 'temperatura'];
         fetch('https://prenasal-cuttlefish-3039.dataplicity.io/sensors/BME680').then(res => {
-            console.log(res)
-        }).catch(err => {
-            console.log(err)
+            return res.text();
+        }).then(responseData => {
+            let data = JSON.parse(responseData);
+            createTable(labels, document.getElementById('table-container'), data);   
         });
-       createTable(labels, document.getElementById('table-container'), data);
     }
     
 }
