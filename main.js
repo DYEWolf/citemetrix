@@ -90,6 +90,7 @@ function createTable(labels, container, data) {
         for (k = 0; k < labels.length; k++) {
           var tbodyTd = document.createElement('td');
           tbodyTd.innerHTML = data[j][labels[k].toLowerCase()];
+          console.log(data[j][labels[k].toLowerCase()])
           tbodyTr.appendChild(tbodyTd);
         }
         tbody.appendChild(tbodyTr);
