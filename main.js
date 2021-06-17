@@ -5,22 +5,20 @@ function getSensorData() {
     if(sensor == 'VEML7700') {
 
         let labels = ['GPS', 'Timestamp', 'lux', 'white']; 
-        let data = [
-            {
-                timeStamp: "11",
-                gps: '11',
-                lux: "11",
-                white: "11"
-            },
-        ]
+
+        const options = {
+            method: 'GET',
+            headers: new Headers({'Access-Control-Allow-Origin': '*',  'Content-Type': 'application/json'}),
+            mode: 'no-cors',
+            cache: 'no-cache'
+        };
+  
         fetch('https://prenasal-cuttlefish-3039.dataplicity.io/sensors/VEML7700').then(res => {
             return res.text();
         }).then(responseData => {
             let data = JSON.parse(responseData);
-            console.log(responseData)
-            console.log(data)
-            createTable(labels, document.getElementById('table-container'), data);
-            
+
+            createTable(labels, document.getElementById('table-container'), data);   
         });
        
 
@@ -66,6 +64,8 @@ function getSensorData() {
 
 function createTable(labels, container, data) {
 
+    console.log(data)
+
     let tableExist = document.getElementById('my-table');
     if(tableExist) tableExist.remove();
 ;
@@ -76,21 +76,22 @@ function createTable(labels, container, data) {
     table.classList.add("table");
     table.setAttribute('id', 'my-table')
 
-    var theadTr = document.createElement('tr');
-    for (var i = 0; i < labels.length; i++) {
-        var theadTh = document.createElement('th');
+    let theadTr = document.createElement('tr');
+    for (let i = 0; i < labels.length; i++) {
+        let theadTh = document.createElement('th');
         theadTh.innerHTML = labels[i];
         theadTr.appendChild(theadTh);
     }
     thead.appendChild(theadTr);
     table.appendChild(thead);
 
-    for (j = 0; j < data.length; j++) {
-        var tbodyTr = document.createElement('tr');
-        for (k = 0; k < labels.length; k++) {
-          var tbodyTd = document.createElement('td');
-          tbodyTd.innerHTML = data[j][labels[k].toLowerCase()];
-          console.log(data[j][labels[k].toLowerCase()])
+    for (let j = 0; j < data.length; j++) {
+        let tbodyTr = document.createElement('tr');
+        for (let k = 0; k < labels.length; k++) {
+          let tbodyTd = document.createElement('td');
+          tbodyTd.innerHTML = data[j][labels[k]];
+          console.log(k,j)
+          console.log(data[j][labels[k]])
           tbodyTr.appendChild(tbodyTd);
         }
         tbody.appendChild(tbodyTr);
