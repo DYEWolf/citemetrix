@@ -71,19 +71,3 @@ function createTable(labels, container, data) {
 
 }
 
-async function myFetch() {
-
-    const options = {
-        method: 'GET',
-        headers: new Headers({'Access-Control-Allow-Origin': '*',  'Content-Type': 'application/json'}),
-        mode: 'no-cors',
-        cache: 'no-cache'
-    };
-
-
-    let response = await fetch('https://prenasal-cuttlefish-3039.dataplicity.io/sensors/VEML7700');
-
-    console.log(response)
-
-    return response;
-}
