@@ -19,3 +19,13 @@ h1 {
   text-align: center;
   margin-top: 20px;
 }
+
+@media (max-width: 600px) {
+  .sensor-button-group {
+    display: block;
+  }
+
+  button {
+    margin-top: 30px;
+  }
+}

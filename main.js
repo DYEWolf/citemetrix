@@ -34,8 +34,6 @@ function createTable(labels, container) {
     let thead = document.createElement('thead');
     let tbody = document.createElement('tbody');
     
-    
-
     table.classList.add("table");
     table.setAttribute('id', 'my-table')
 
