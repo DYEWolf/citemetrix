@@ -6,13 +6,6 @@ function getSensorData() {
 
         let labels = ['GPS', 'Timestamp', 'lux', 'white']; 
 
-        const options = {
-            method: 'GET',
-            headers: new Headers({'Access-Control-Allow-Origin': '*',  'Content-Type': 'application/json'}),
-            mode: 'no-cors',
-            cache: 'no-cache'
-        };
-  
         fetch('https://prenasal-cuttlefish-3039.dataplicity.io/sensors/VEML7700').then(res => {
             return res.text();
         }).then(responseData => {
@@ -44,8 +37,6 @@ function getSensorData() {
 
 function createTable(labels, container, data) {
 
-    console.log(data)
-
     let tableExist = document.getElementById('my-table');
     if(tableExist) tableExist.remove();
 ;
@@ -70,8 +61,6 @@ function createTable(labels, container, data) {
         for (let k = 0; k < labels.length; k++) {
           let tbodyTd = document.createElement('td');
           tbodyTd.innerHTML = data[j][labels[k]];
-          console.log(k,j)
-          console.log(data[j][labels[k]])
           tbodyTr.appendChild(tbodyTd);
         }
         tbody.appendChild(tbodyTr);
