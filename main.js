@@ -27,8 +27,11 @@ function getSensorData() {
         fetch('https://prenasal-cuttlefish-3039.dataplicity.io/sensors/VEML7700').then(res => {
           
             return res.text();
-        }).then(data1 => {
-            console.log(data1)
+        }).then(responseData => {
+            let data = JSON.parse(responseData);
+            console.log(responseData)
+            console.log(data)
+
             
         });
         createTable(labels, document.getElementById('table-container'), data);
