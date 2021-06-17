@@ -3,35 +3,73 @@ function getSensorData() {
     let sensor = document.querySelector('input[name="sensor"]:checked').value;
 
     if(sensor == 'VEML7700') {
-        let labels = ['Timestamp', 'GPS', 'Lux', 'White']; 
-        fetch('https://prenasal-cuttlefish-3039.dataplicity.io/sensors/VEML7700').then(res => {
+
+
+        const options = {
+            method: 'GET',
+            headers: new Headers({'Access-Control-Allow-Origin': '*',  'Content-Type': 'application/json'}),
+            mode: 'no-cors',
+            cache: 'no-cache'
+        };
+
+
+        let labels = ['timeStamp', 'GPS', 'Lux', 'White']; 
+        let data = [
+            {
+                timeStamp: "11",
+                gps: '11',
+                lux: "11",
+                white: "11"
+            },
+        ]
+        fetch('https://prenasal-cuttlefish-3039.dataplicity.io/sensors/VEML7700', options).then(res => {
             console.log(res)
         }).catch(err => {
             console.log(err)
         });
-        createTable(labels, document.getElementById('table-container'));
+        createTable(labels, document.getElementById('table-container'), data);
 
     } else if(sensor == 'TCS34725') {
-        let labels = ['Timestamp', 'GPS', 'Red', 'Green', 'Blue', 'Clear', 'Temp. Color'];
+        let labels = ['timeStamp', 'GPS', 'Red', 'Green', 'Blue', 'Clear', 'tempColor'];
+        let data = [
+            {
+                timeStamp: "11",
+                gps: '11',
+                red: "11",
+                green: "11",
+                blue: "11",
+                clear: "11",
+                tempColor: "11"
+            },
+        ]
         fetch('https://prenasal-cuttlefish-3039.dataplicity.io/sensors/TCS34725').then(res => {
             console.log(res)
         }).catch(err => {
             console.log(err)
         });
-       createTable(labels, document.getElementById('table-container'));
+       createTable(labels, document.getElementById('table-container'), data);
     } else {
-        let labels = ['Timestamp', 'GPS', 'Temp.', 'Press.', 'Hum'];
+        let labels = ['timeStamp', 'GPS', 'Temp', 'Press', 'Hum'];
+        let data = [
+            {
+                timeStamp: "11",
+                gps: '11',
+                temp: "11",
+                press: "11",
+                hum: "11"
+            },
+        ]
         fetch('https://prenasal-cuttlefish-3039.dataplicity.io/sensors/BME680').then(res => {
             console.log(res)
         }).catch(err => {
             console.log(err)
         });
-       createTable(labels, document.getElementById('table-container'));
+       createTable(labels, document.getElementById('table-container'), data);
     }
     
 }
 
-function createTable(labels, container) {
+function createTable(labels, container, data) {
 
     let tableExist = document.getElementById('my-table');
     if(tableExist) tableExist.remove();
@@ -51,6 +89,17 @@ function createTable(labels, container) {
     }
     thead.appendChild(theadTr);
     table.appendChild(thead);
+
+    for (j = 0; j < data.length; j++) {
+        var tbodyTr = document.createElement('tr');
+        for (k = 0; k < labels.length; k++) {
+          var tbodyTd = document.createElement('td');
+          tbodyTd.innerHTML = data[j][labels[k].toLowerCase()];
+          tbodyTr.appendChild(tbodyTd);
+        }
+        tbody.appendChild(tbodyTr);
+      }
+      table.appendChild(tbody);
 
     container.appendChild(table);
 
