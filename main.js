@@ -17,6 +17,7 @@ function getSensorData() {
             console.log(res.json())
             let resData = res.json();
             console.log(resData["[[PromiseResult]]"])
+            console.log(resData)
             return res.json();
         }).then(data1 => {
             console.log(data1)
